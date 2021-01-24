@@ -7,7 +7,7 @@ export default colors = {
   gray5: '#E0E0E0',
   gray6: '#F2F2F2',
 
-  red: '#EB5757',
+  red: '#b00020',
   orange: '#F2994A',
   yellow: '#F2C94C',
   rocket: '#7159c1',

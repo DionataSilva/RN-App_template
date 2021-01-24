@@ -8,6 +8,7 @@ import {
   StatusBar,
   Alert,
   View,
+  ScrollView
 } from 'react-native'
 import { connect } from 'react-redux'
 import { ButtonComponent, InputTextComponent } from '~/ui/global_components'
@@ -45,55 +46,58 @@ const Main = ({
   }
 
   return (
-    <ImageBackground
-      source={{
-        uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/background.png',
-      }}
-      style={styles.container}
-      resizeMode="cover"
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps='handled'
     >
-      <StatusBar barStyle="light-content" backgroundColor={colors.rocket} />
-      <Image
+      <ImageBackground
         source={{
-          uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/rocketseat_logo.png',
+          // uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/background.png',
         }}
-        style={styles.logo}
-        resizeMode="contain"
-      />
-      {loading ?
-        <Text style={styles.welcome}>Carregando...</Text> :
-        <Text style={styles.welcome}>Bem-vindo ao Template Avançado!</Text>
-      }
-      <View style={{
-        width: '100%',
-        alignItems: 'center',
-        padding: 15,
-      }}>
-        <InputTextComponent
-          placeholder={'E-mail'}
-          onChangeText={onChangeText}
-          value={text}
+        style={styles.container}
+        resizeMode="cover"
+      >
+        <StatusBar barStyle="light-content" backgroundColor={colors.rocket} />
+        <Image
+          source={require('~/assets/images/my-logo.png')}
+          style={styles.logo}
+          resizeMode="contain"
         />
-        <InputTextComponent
-          placeholder={'Senha'}
-          secureTextEntry
-          textContentType={'password'}
-          onChangeText={setPassword}
-          value={password}
+        {loading ?
+          <Text style={styles.welcome}>Carregando...</Text> :
+          <Text style={styles.welcome}>Bem-vindo!</Text>
+        }
+        <View style={{
+          width: '100%',
+          alignItems: 'center',
+          padding: 15,
+        }}>
+          <InputTextComponent
+            placeholder={'E-mail'}
+            onChangeText={onChangeText}
+            value={text}
+          />
+          <InputTextComponent
+            placeholder={'Senha'}
+            secureTextEntry
+            textContentType={'password'}
+            onChangeText={setPassword}
+            value={password}
+            onSubmit={onLogin}
+          />
+        </View>
+        {error &&
+          <Text style={styles.instructions, {
+            color: colors.red
+          }}>Erro ao logar, verifique email e senha</Text>
+        }
+        <ButtonComponent
+          disabled={loading}
+          title={'Logar'}
+          onClick={onLogin}
+          color={colors.rocket}
         />
-      </View>
-      {error &&
-        <Text style={styles.instructions, {
-          color: colors.red
-        }}>Erro ao logar, verifique email e senha</Text>
-      }
-      <ButtonComponent
-        disabled={loading}
-        title={'Logar'}
-        onClick={onLogin}
-        color={colors.rocket}
-      />
-    </ImageBackground>
+      </ImageBackground>
+    </ScrollView>
   )
 }
 
