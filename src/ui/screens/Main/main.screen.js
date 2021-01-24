@@ -21,7 +21,8 @@ const Main = ({
   token,
   loading,
   error,
-  login
+  login,
+  navigation: { navigate }
 }) => {
 
   const [text, onChangeText] = useState('')
@@ -29,8 +30,8 @@ const Main = ({
 
   useEffect(() => {
     if (isLogged) {
+      navigate('App')
       console.tron.log(`Token: ${token}`)
-      Alert.alert('Logado com sucesso')
 
       onChangeText('')
       setPassword('')
@@ -56,7 +57,6 @@ const Main = ({
         style={styles.container}
         resizeMode="cover"
       >
-        <StatusBar barStyle="light-content" backgroundColor={colors.rocket} />
         <Image
           source={require('~/assets/images/my-logo.png')}
           style={styles.logo}
@@ -88,7 +88,7 @@ const Main = ({
         {error &&
           <Text style={styles.instructions, {
             color: colors.red
-          }}>Erro ao logar, verifique email e senha</Text>
+          }}>Erro ao logar, verifique seu email e senha e tente novamente.</Text>
         }
         <ButtonComponent
           disabled={loading}
