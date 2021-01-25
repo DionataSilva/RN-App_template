@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import colors from '~/ui/global_styles/colors'
-
-import {
-  Text,
-  Image,
-  ImageBackground,
-  StatusBar,
-  Alert,
-  View,
-  ScrollView
-} from 'react-native'
+import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { ButtonComponent, InputTextComponent } from '~/ui/global_components'
-
-import { styles } from './main.styles'
+import {
+  ButtonComponent,
+  InputTextComponent
+} from '~/ui/global_components'
+import {
+  Container,
+  Logo,
+  StyledText,
+  ErrorText,
+  FormContainer,
+} from './main.styles'
 import maps from './main.map'
+import colors from '~/ui/global_styles/colors'
+import I18n from '~/i18n/src/locale'
 
 const Main = ({
   isLogged,
@@ -25,15 +25,13 @@ const Main = ({
   navigation: { navigate }
 }) => {
 
-  const [text, onChangeText] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   useEffect(() => {
     if (isLogged) {
       navigate('App')
-      console.tron.log(`Token: ${token}`)
-
-      onChangeText('')
+      setEmail('')
       setPassword('')
     }
     if (error && !loading && !isLogged) {
@@ -42,61 +40,43 @@ const Main = ({
     }
   }, [loading, error])
 
-  const onLogin = () => {
-    login({ email: text, password })
-  }
+  const onLogin = () => login({ email, password })
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}
       keyboardShouldPersistTaps='handled'
     >
-      <ImageBackground
-        source={{
-          // uri: 'https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/background.png',
-        }}
-        style={styles.container}
-        resizeMode="cover"
-      >
-        <Image
+      <Container>
+        <Logo
           source={require('~/assets/images/my-logo.png')}
-          style={styles.logo}
           resizeMode="contain"
         />
-        {loading ?
-          <Text style={styles.welcome}>Carregando...</Text> :
-          <Text style={styles.welcome}>Bem-vindo!</Text>
-        }
-        <View style={{
-          width: '100%',
-          alignItems: 'center',
-          padding: 15,
-        }}>
+        <StyledText>
+          {I18n(`main.${loading ? 'loading' : 'welcome'}`)}
+        </StyledText>
+        <FormContainer>
           <InputTextComponent
-            placeholder={'E-mail'}
-            onChangeText={onChangeText}
-            value={text}
+            placeholder={I18n('main.email')}
+            onChangeText={setEmail}
+            value={email}
           />
           <InputTextComponent
-            placeholder={'Senha'}
+            placeholder={I18n('main.password')}
             secureTextEntry
             textContentType={'password'}
             onChangeText={setPassword}
             value={password}
             onSubmit={onLogin}
           />
-        </View>
-        {error &&
-          <Text style={styles.instructions, {
-            color: colors.red
-          }}>Erro ao logar, verifique seu email e senha e tente novamente.</Text>
-        }
+        </FormContainer>
+        {error && <ErrorText>{I18n('main.errorMessage')}</ErrorText>}
         <ButtonComponent
           disabled={loading}
-          title={'Logar'}
+          title={I18n('main.signIn')}
           onClick={onLogin}
           color={colors.rocket}
         />
-      </ImageBackground>
+      </Container>
     </ScrollView>
   )
 }

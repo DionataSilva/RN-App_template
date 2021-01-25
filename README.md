@@ -28,3 +28,4 @@ Este projeto visa a criação de um template que possa ser utilizado no momento 
 * [EditorConfig](https://editorconfig.org/) - O EditorConfig é um formatador de arquivos e coleções em forma de Plugin para Editores de código/texto com o objetivo de manter um padrão de código consistente entre diferentes editores, IDE's ou ambientes; 
 * [styled-components](https://styled-components.com/) - Os componentes estilizados com Styled-componet permitem que você escreva o código CSS real para estilizar seus componentes. Ele também remove o mapeamento entre componentes e estilos; 
 * [react-native-vector-icons](https://www.npmjs.com/package/react-native-vector-icons) - Perfeito para botões, logotipos e barras de navegação / guias. Fácil de estender, estilizar e integrar; 
+* [I18n-js](https://github.com/fnando/i18n-js) - Internacionalização; 
