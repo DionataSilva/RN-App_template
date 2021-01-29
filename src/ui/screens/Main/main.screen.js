@@ -22,7 +22,8 @@ const Main = ({
   loading,
   error,
   login,
-  navigation: { navigate }
+  navigation: { navigate },
+  theme,
 }) => {
 
   const [email, setEmail] = useState('')
@@ -74,7 +75,6 @@ const Main = ({
           disabled={loading}
           title={I18n('main.signIn')}
           onClick={onLogin}
-          color={colors.rocket}
         />
       </Container>
     </ScrollView>

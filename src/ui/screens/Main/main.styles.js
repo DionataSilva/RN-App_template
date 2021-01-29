@@ -1,16 +1,15 @@
 import { Dimensions } from 'react-native'
 import styled from 'styled-components'
-import colors from '~/ui/global_styles/colors'
 
-const windowDimension = Dimensions.get('window').height * 0.11
-const _width = windowDimension * (1950 / 662)
+const windowDimension = (Dimensions.get('window').height * 0.11).toFixed(0)
+const _width = (windowDimension * (1950 / 662)).toFixed(0)
 
 export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: ${colors.rocket};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const Logo = styled.Image`
@@ -23,14 +22,14 @@ export const Logo = styled.Image`
 export const StyledText = styled.Text`
   font-weight: bold;
   text-align: center;
-  color: ${colors.gray4};
-  font-size: 22px;
+  color: ${props => props.theme.colors.gray4};
+  font-size: ${({ theme }) => theme.fontsize.medium};
 `;
 
 export const ErrorText = styled.Text`
   text-align: center;
-  color: ${colors.red};
-  font-size: 14px;
+  color: ${({ theme }) => theme.colors.red};
+  font-size: ${({ theme }) => theme.fontsize.small};
 `;
 
 export const FormContainer = styled.View`
