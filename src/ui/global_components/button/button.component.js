@@ -1,39 +1,26 @@
 import React from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import colors from '~/ui/global_styles/colors'
+import {
+  ButtonContainer,
+  Button,
+  ButtonText
+} from './button.styles'
 
 export const ButtonComponent = ({
   onClick,
-  color = colors.gray3,
+  backgroundColor,
+  TextColor,
   title,
-  style,
   disabled
 }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
+    <ButtonContainer>
+      <Button
+        disabled={disabled}
+        color={backgroundColor}
         onPress={onClick}
       >
-        <Text>{title}</Text>
-      </TouchableOpacity>
-    </View>
+        <ButtonText color={TextColor}>{title}</ButtonText>
+      </Button>
+    </ButtonContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: 'center',
-    height: 50,
-    backgroundColor: colors.gray3,
-    padding: 10,
-    borderRadius: 15
-  },
-});
