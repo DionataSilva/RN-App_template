@@ -8,15 +8,18 @@ import store from './store'
 import Routes from '~/routes'
 import { StatusBar } from 'react-native'
 import { ThemeProvider } from 'styled-components'
-import { getTheme } from './utils'
+import { useTheme } from './utils/hooks/use-theme'
 
 const App = () => {
-  const theme = getTheme()
+  let theme = useTheme()
 
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={theme.colors.dark1}
+        />
         <Routes />
       </ThemeProvider>
     </Provider>

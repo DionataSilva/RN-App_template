@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 import {
   ButtonComponent,
   InputTextComponent
-} from '~/ui/global_components'
-import {
-  Container,
-  Logo,
-  StyledText,
-  ErrorText,
-  FormContainer,
-} from './main.styles'
+} from '~/ui/components'
+import * as SC from './main.styles'
 import maps from './main.map'
-import colors from '~/ui/global_styles/colors'
 import I18n from '~/i18n/src/locale'
+import { useTheme } from '~/utils'
 
 const Main = ({
   isLogged,
@@ -23,9 +17,9 @@ const Main = ({
   error,
   login,
   navigation: { navigate },
-  theme,
 }) => {
 
+  const {colors} = useTheme()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -47,21 +41,25 @@ const Main = ({
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}
       keyboardShouldPersistTaps='handled'
     >
-      <Container>
-        <Logo
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary1} />
+      <SC.Container>
+        <SC.Logo
+          color={colors.light2}
           source={require('~/assets/images/my-logo.png')}
           resizeMode="contain"
         />
-        <StyledText>
+        <SC.Text>
           {I18n(`main.${loading ? 'loading' : 'welcome'}`)}
-        </StyledText>
-        <FormContainer>
+        </SC.Text>
+        <SC.Form>
           <InputTextComponent
+            color={colors.light2}
             placeholder={I18n('main.email')}
             onChangeText={setEmail}
             value={email}
           />
           <InputTextComponent
+            color={colors.light2}
             placeholder={I18n('main.password')}
             secureTextEntry
             textContentType={'password'}
@@ -69,14 +67,15 @@ const Main = ({
             value={password}
             onSubmit={onLogin}
           />
-        </FormContainer>
-        {error && <ErrorText>{I18n('main.errorMessage')}</ErrorText>}
+          {error && <SC.Error>{I18n('main.errorMessage')}</SC.Error>}
+        </SC.Form>
         <ButtonComponent
+          backgroundColor={colors.light2}
           disabled={loading}
           title={I18n('main.signIn')}
           onClick={onLogin}
         />
-      </Container>
+      </SC.Container>
     </ScrollView>
   )
 }

@@ -1,19 +1,11 @@
 import React from 'react'
-import { SafeAreaView, ScrollView, Text } from 'react-native'
-import colors from '~/ui/global_styles/colors'
+import { ScrollView } from 'react-native'
+import * as SC from './home.styles'
 
 export const HomeScreen = () => (
-  <SafeAreaView style={{
-    flex: 1,
-    backgroundColor: colors.rocket,
-  }}>
+  <SC.Container>
     <ScrollView>
-      <Text style={{
-        color: colors.gray4,
-        fontSize: 22,
-        fontWeight: 'bold',
-        textAlign: 'center',
-      }}>Home Screen</Text>
+      <SC.Text>Home Screen</SC.Text>
     </ScrollView>
-  </SafeAreaView>
+  </SC.Container>
 )

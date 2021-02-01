@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-export const ButtonContainer = styled.View`
-  flex:1;
+export const Container = styled.View`
+  flex: 1;
   width: 100%;
   justify-content: center;
   padding: 10px 0;
@@ -16,6 +16,6 @@ export const Button = styled.TouchableOpacity`
   background-color: ${({ theme, color }) => color ? color : theme.colors.gray3};
 `;
 
-export const ButtonText = styled.Text`
+export const Text = styled.Text`
   color: ${({ theme, color }) => color ? color : 'black'};
 `;

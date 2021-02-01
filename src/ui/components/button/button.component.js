@@ -1,9 +1,5 @@
 import React from "react"
-import {
-  ButtonContainer,
-  Button,
-  ButtonText
-} from './button.styles'
+import * as SC from './button.styles'
 
 export const ButtonComponent = ({
   onClick,
@@ -13,14 +9,14 @@ export const ButtonComponent = ({
   disabled
 }) => {
   return (
-    <ButtonContainer>
-      <Button
+    <SC.Container>
+      <SC.Button
         disabled={disabled}
         color={backgroundColor}
         onPress={onClick}
       >
-        <ButtonText color={TextColor}>{title}</ButtonText>
-      </Button>
-    </ButtonContainer>
+        <SC.Text color={TextColor}>{title}</SC.Text>
+      </SC.Button>
+    </SC.Container>
   )
 }

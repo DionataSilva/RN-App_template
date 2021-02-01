@@ -11,19 +11,19 @@ export const Container = styled.View`
   padding: 15px;
   border-radius: 15px;
   border-width: 1.5px;
-  color: ${({ theme: { colors } }) => colors.gray4};
-  border-color: ${({ theme: { colors } }) => colors.gray4};
+  color: ${({ theme, color }) => color ? color : theme.colors.gray3};
+  border-color: ${({ theme, color }) => color ? color : theme.colors.gray3};
 `;
 
 export const InputText = styled.TextInput`
   width: 90%;
   height: 50px;
-  color: ${({ theme: { colors } }) => colors.gray4};
+  color: ${({ theme, color }) => color ? color : theme.colors.gray3};
 `
 
 export const EyeIcon = styled(Icon).attrs(({ IsVisiblePassword }) => ({
   name: IsVisiblePassword ? 'eye-off-outline' : 'eye-outline',
   size: 30,
 }))`
-  color: ${({ theme: { colors } }) => colors.gray4};
+  color: ${({ theme, color }) => color ? color : theme.colors.gray3};
 `;

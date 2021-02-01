@@ -8,15 +8,17 @@ export default {
     gray5: '#E0E0E0',
     gray6: '#F2F2F2',
 
-    red: '#b00020',
-    orange: '#F2994A',
-    yellow: '#F2C94C',
-    background: '#7159c1',
-  },
-  fonts: [],
-  fontsize: {
-    small: '14px',
-    medium: '22px',
-    large: '3em'
+    primary1: '#ac9d8a',
+    light1: '#deceba',
+    dark1: '#7d6f5d',
+
+    primary2: '#fbe9db',
+    light2: '#ffffff',
+    dark2: '#c8b7a9',
+
+    error: '#d32f2f',
+    warning: '#f57c00',
+    info: '#1976d2',
+    success: '#81c784',
   },
 }

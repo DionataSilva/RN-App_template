@@ -6,10 +6,11 @@ const _width = (windowDimension * (1950 / 662)).toFixed(0)
 
 export const Container = styled.View`
   flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: ${({ theme }) => theme.colors.background};
+  padding: ${({ theme: { padding } }) => padding.lg};
+  background: ${({ theme: { colors } }) => colors.primary1};
 `;
 
 export const Logo = styled.Image`
@@ -19,21 +20,21 @@ export const Logo = styled.Image`
   margin-bottom: ${windowDimension};
 `;
 
-export const StyledText = styled.Text`
+export const Text = styled.Text`
   font-weight: bold;
   text-align: center;
-  color: ${props => props.theme.colors.gray4};
-  font-size: ${({ theme }) => theme.fontsize.medium};
+  color: ${({ theme: { colors } }) => colors.light2};
+  font-size: ${({ theme: { fontsize } }) => fontsize.md};
 `;
 
-export const ErrorText = styled.Text`
+export const Error = styled.Text`
   text-align: center;
-  color: ${({ theme }) => theme.colors.red};
-  font-size: ${({ theme }) => theme.fontsize.small};
+  color: ${({ theme: { colors } }) => colors.error};
+  font-size: ${({ theme: { fontsize } }) => fontsize.sm};
 `;
 
-export const FormContainer = styled.View`
+export const Form = styled.View`
   align-items: center;
-  padding: 15px;
+  margin: ${({ theme: { margin } }) => margin.lg};
   width: 100%;
 `;
