@@ -1,0 +1,41 @@
+import { put, takeLatest } from 'redux-saga/effects'
+import { api } from '~/services'
+import { {{pascalCase name}} } from '~/store/ducks/{{dashCase name}}/{{pascalCase name}}.ducks' // TODO: Importar de ~/store/ducks/index.js
+import { publicRequest } from './http'
+
+function* sagaName({ payload }) {
+  const { onError, onSuccess } = {{pascalCase name}}.actions
+
+  yield publicRequest({
+    req: api.post,
+    url: '/path',
+    data: payload,
+    onError: apiResponse => {
+      return put(onError(apiResponse))
+    },
+    onSuccess: response => {
+      return put(onSuccess(response.data))
+    }
+  })
+}
+
+export const {{pascalCase name}}Sagas = {
+  sagaName,
+}
+
+
+/* TODO: Importar em ~/store/sagas/index.js
+  ...
+  import { {{pascalCase name}}Saga } from './{{camelCase name}}'
+  ...
+  export default function* rootSaga() {
+    yield all([
+      ...
+      fork({{pascalCase name}}Saga)
+      ...
+    ])
+  }
+*/
+export function* {{pascalCase name}}Saga() {
+  yield takeLatest({{pascalCase name}}.types.TYPE_NAME, sagaName)
+}

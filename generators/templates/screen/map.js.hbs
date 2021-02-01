@@ -1,0 +1,31 @@
+import { {{pascalCase name}} } from '~/store/ducks/{{dashCase name}}/{{pascalCase name}}.ducks' //deve ser exportado no index dos ducks
+const actions = {{pascalCase name}}.actions
+
+
+/* TODO: Adicionar em ~/store/ducks/reducers.js
+  ...
+  import { {pascalCase name} } from './{camelCase name}'
+  ...
+
+  export const reducers = combineReducers({
+    ...
+    {{camelCase name}}Reducer: {{pascalCase name}}.reducer,
+    ...
+  })
+*/
+const mapStateToProps = ({ {{camelCase name}}Reducer }) => {
+  const { } = {{camelCase name}}Reducer
+
+  return { }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fn: data => dispatch(actions.fn(data))
+  }
+}
+
+export default {
+  mapStateToProps,
+  mapDispatchToProps,
+}

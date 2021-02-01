@@ -1,0 +1,28 @@
+import React, { useEffect, useState } from 'react'
+import { ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+import maps from './{{camelCase name}}.map'
+import I18n from '~/i18n/src/locale'
+import { useTheme } from '~/utils'
+import * as SC from './{{camelCase name}}.styles'
+
+export const {{camelCase name}} = (props) => {
+
+  const {colors} = useTheme()
+  const [state, setState] = useState('')
+
+  useEffect(() => { }, [])
+  
+  return (
+  <SC.Container>
+    <ScrollView>
+      <SC.Text>{{pascalCase name}}</SC.Text>
+    </ScrollView>
+  </SC.Container>
+  )
+}
+
+export const {{pascalCase name}} = connect(
+  maps.mapStateToProps,
+  maps.mapDispatchToProps,
+)({{camelCase name}})

@@ -29,3 +29,13 @@ Este projeto visa a criação de um template que possa ser utilizado no momento 
 * [styled-components](https://styled-components.com/) - Os componentes estilizados com Styled-componet permitem que você escreva o código CSS real para estilizar seus componentes. Ele também remove o mapeamento entre componentes e estilos; 
 * [react-native-vector-icons](https://www.npmjs.com/package/react-native-vector-icons) - Perfeito para botões, logotipos e barras de navegação / guias. Fácil de estender, estilizar e integrar; 
 * [I18n-js](https://github.com/fnando/i18n-js) - Internacionalização; 
+
+* [plop](https://www.npmjs.com/package/plop) - Micro-generator framework that makes it easy for an entire team to create files with a level of uniformity; 
+
+---
+### Comandos
+
+- `yarn generate [option]` - comando para gerar componentes automaticamante;
+  - `options:`
+    - `screen` - Gera uma sreen
+    - `component` - Gera uma component

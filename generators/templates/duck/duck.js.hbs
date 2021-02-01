@@ -1,0 +1,57 @@
+// Action Types
+const Types = {
+  SUCCESS: '{{dashCase name}}/SUCCESS',
+  ERROR: '{{dashCase name}}/ERROR',
+}
+
+
+// Reducer
+const initialState = {
+  data: {},
+  loading: false,
+  error: null
+}
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case Types.SUCCESS:
+      return {
+        ...initialState,
+        data: action.data,
+      }
+    case Types.ERROR:
+      return {
+        ...initialState,
+        error: action.error
+      }
+    default:
+      return state;
+  }
+}
+
+
+// Action Creators
+const onError = (error) => {
+  return {
+    type: Types.ERROR,
+    error
+  }
+}
+
+const onSuccess = (data) => {
+  return {
+    type: Types.SUCCESS,
+    data
+  }
+}
+
+// Export
+// TODO: Importar em ~/store/ducks/index.js
+export const {{pascalCase name}} = {
+  types: Types,
+  actions: {
+    onSuccess,
+    onError,
+  },
+  reducer,
+}
